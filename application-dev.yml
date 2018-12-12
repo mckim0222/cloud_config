@@ -1,0 +1,16 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://chan.minkim:1001/eureka/
+  instance:
+    instanceId: ${spring.application.name}:${spring.profiles.active}:${spring.cloud.client.hostname}:${server.port}:${random.value}
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 90
+    metadataMap:
+      #아래는 spring boot admin을 위한 설정
+      management.context-path: ${server.contextPath}${management.context-path}
+      health.path: /health
+  security:
+    user:
+      password: none
