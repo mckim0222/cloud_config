@@ -1,0 +1,12 @@
+management:
+  endpoints:
+    web:
+      exposure.include: '*'
+      exposure.exclude: shutdown
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+      roles: ACTUATOR
+  health:
+    diskspace.enabled: false
