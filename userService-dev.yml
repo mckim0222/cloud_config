@@ -13,7 +13,7 @@ spring:
   jpa:
     showSql: true
     hibernate:
-      ddlAuto: update
+      ddlAuto: create
       formatSql: true
     properties:
       hibernate:
