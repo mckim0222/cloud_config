@@ -1,0 +1,18 @@
+server:
+  port: 0
+  zipkin:
+    baseUrl: http://chan.minkim:9411
+  sleuth:
+    sampler:
+      percentage: 0.2
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://chan.minkim:1001/eureka/
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    leaseRenewalIntervalInSeconds: 3
+    leaseExpirationDurationInSeconds: 5
