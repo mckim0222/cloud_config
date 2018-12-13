@@ -1,0 +1,38 @@
+server:
+  port: 0
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:file:/Users/kakao/Documents/work/test/cloud/db/client
+    username: user
+    password: password
+  jpa:
+    showSql: true
+    hibernate:
+      ddlAuto: update
+      formatSql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        formatSql: true
+        id:
+          newGeneratorMappings: true
+  zipkin:
+    baseUrl: http://chan.minkim:9411
+  sleuth:
+    sampler:
+      percentage: 0.2
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://chan.minkim:1001/eureka/
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    leaseRenewalIntervalInSeconds: 3
+    leaseExpirationDurationInSeconds: 5
